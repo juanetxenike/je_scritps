@@ -42,17 +42,17 @@ mkdir -p $document_root
 chown -R www-data:www-data $document_root
 
 # Set the permissions
-chmod -R 775 www-data:www-data $document_root
+chmod -R 775 $document_root
 
 # Enable the site
 a2ensite "${siteName}.conf"
 
 # Reload Apache to apply changes
-systemcl reload apache2
+systemctl reload apache2
 
 # CREATE MySQL database, user and
 mysql -u $DB_USER -p$DB_PASSWORD <<MYSQL_SCRIPT
 CREATE DATABASE $siteName;
 MYSQL_SCRIPT
 
-echo "Site setup complete
+echo "Site setup complete"
